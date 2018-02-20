@@ -13,6 +13,9 @@ class Persona(models.Model):
     edad = models.IntegerField()
     mascotas = models.ManyToManyField(Mascotas, through='PersonaMascotas')
 
+    def __str__(self):
+        return '%s - %s' % (self.id, self.nombre)
+
 
 """
 Creo este modelo para relacionar Persona con mascotas,

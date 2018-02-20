@@ -15,7 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
+from rest_framework import routers
+
+from mascotas.views import MascotaViewSet, RazaMascotaViewSet
+from personas.views import PersonaViewSet, PersonaMascotasViewSet
+
+""" 
+DjangoRestFramework, tiene una interfaz amigable
+para mostrar sus API REST, con DefaultRouter
+podemos acceder a esta interfaz,
+entren a localhost:8000, y veran como pueden probar sus 
+"POST, PUT, DELETE, GET, PATCH, OPTIONS"
+"""
+router = routers.DefaultRouter()
+router.register(r'personas', PersonaViewSet)
+router.register(r'mascotas', MascotaViewSet)
+router.register(r'razamascotas', RazaMascotaViewSet)
+router.register(r'personasmascotas', PersonaMascotasViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
