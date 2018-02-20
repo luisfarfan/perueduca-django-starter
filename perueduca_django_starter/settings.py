@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'mascotas.apps.MascotasConfig',
     'personas.apps.PersonasConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
